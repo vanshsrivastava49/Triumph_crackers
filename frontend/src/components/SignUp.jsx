@@ -166,10 +166,10 @@ const SignUp = () => {
         </form>
         <p>Already have an account? <a href="/login">Login here</a></p>
         <Link to="/upload">
-          <button className="btn-upload">User Dashboard</button>
+          <button className="btn">User Dashboard</button>
         </Link>
         <Link to="/admin">
-          <button className="btn-upload">Admin Dashboard</button>
+          <button className="btn">Admin Dashboard</button>
         </Link>
       </div>
     </div>
