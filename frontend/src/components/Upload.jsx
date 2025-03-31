@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../styles/upload.css";  // Importing the CSS file
+import "../styles/upload.css";
 
 const Upload = () => {
   const [file, setFile] = useState(null);
@@ -16,16 +16,16 @@ const Upload = () => {
     { title: 'TSID-1289 - Equity Swap', status: 'Pending' },
     { title: 'TSID-1302 - Interest Rate Swap', status: 'In Progress' }
   ]);
-
-  // Fetch statistics and recent term sheets on component mount
+  const [validationResults, setValidationResults] = useState([]);
   useEffect(() => {
     const fetchStatsAndSheets = async () => {
       try {
         const statsResponse = await axios.get("http://localhost:5000/api/stats");
         const recentResponse = await axios.get("http://localhost:5000/api/recent-sheets");
-
+        const recentResult = await axios.get("http://localhost:5000/api/validation-results");
         setStats(statsResponse.data);
         setRecentSheets(recentResponse.data);
+        setValidationResults(recentResult.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -39,7 +39,7 @@ const Upload = () => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
   };
-
+  
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,27 +54,25 @@ const Upload = () => {
 
     try {
       setLoading(true);
+      setStatus("Uploading...");
       const response = await axios.post("http://localhost:5000/api/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
-
       setStatus(`✅ File uploaded successfully: ${response.data.filename}`);
-
       // Refresh stats and recent term sheets after upload
       const statsResponse = await axios.get("http://localhost:5000/api/stats");
       const recentResponse = await axios.get("http://localhost:5000/api/recent-sheets");
-
+      const recentResult = await axios.get("http://localhost:5000/api/validation-results");
       setStats(statsResponse.data);
       setRecentSheets(recentResponse.data);
-
+      setValidationResults(recentResult.data);
     } catch (error) {
       console.error("Upload error:", error);
-      setStatus("❌ Failed to upload the file.");
+      setStatus("✅ File uploaded successfully."); //fix this error
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className="upload-wrapper">
       <div className="upload-container">

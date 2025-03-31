@@ -22,5 +22,37 @@
     "password": "123456",
     "userType": "admin",
     "createdAt": "2025-03-31T08:25:57.144Z"
+  },
+  {
+    "id": 1743439907021,
+    "fullName": "Ratna Durgesh Tiwari",
+    "email": "ratna@gmail.com",
+    "password": "123456",
+    "userType": "applicant",
+    "createdAt": "2025-03-31T16:51:47.021Z"
+  },
+  {
+    "id": 1743441594482,
+    "fullName": "Aditya Singh",
+    "email": "aditya@gmail.com",
+    "password": "123456",
+    "userType": "applicant",
+    "createdAt": "2025-03-31T17:19:54.482Z"
+  },
+  {
+    "id": 1743442095042,
+    "fullName": "Vansh Srivastava",
+    "email": "srivastavavansh49@gmail.com",
+    "password": "123456",
+    "userType": "applicant",
+    "createdAt": "2025-03-31T17:28:15.042Z"
+  },
+  {
+    "id": 1743442168188,
+    "fullName": "Vansh Srivastava",
+    "email": "srivastavavansh499@gmail.com",
+    "password": "123456",
+    "userType": "applicant",
+    "createdAt": "2025-03-31T17:29:28.188Z"
   }
 ]

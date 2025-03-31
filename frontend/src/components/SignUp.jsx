@@ -63,7 +63,7 @@ const SignUp = () => {
   return (
     <div className="signup-wrapper">
       <div className="heading-container">
-        <h1>TermSheet Validation using AI</h1>
+        <h1>TermSheet Validator</h1>
       </div>
       <div className="signup-container">
         <h2>Sign Up</h2>
