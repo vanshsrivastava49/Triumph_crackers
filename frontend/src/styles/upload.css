@@ -1,0 +1,132 @@
+/* upload.css */
+
+.upload-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: "Outfit", sans-serif;
+  padding: 40px 0;
+}
+
+.upload-container {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+/* Statistics Section */
+.stats-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.stat-box {
+  background: #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 30%;
+  transition: 0.3s;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box h2 {
+  font-size: 32px;
+  color: #007bff;
+}
+
+.stat-box p {
+  font-size: 15px;
+  color: #555;
+}
+
+/* Recent Term Sheets */
+.recent-sheets {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.recent-sheets h3 {
+  font-size: 24px;
+  color: #333;
+}
+
+.recent-sheets ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recent-sheets li {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.recent-sheets li:last-child {
+  border-bottom: none;
+}
+
+/* Upload Section */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input[type="file"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.btn-upload {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-upload:hover {
+  background-color: #0056b3;
+}
+
+.status-message {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #28a745;
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: 10px;
+}

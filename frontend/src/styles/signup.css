@@ -1,0 +1,177 @@
+/* ========== Global Styles ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background: linear-gradient(135deg, #f0f0f0, #d6e4ff);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========== Wrapper for Centering ========== */
+.signup-wrapper {
+  display: flex;
+  flex-direction: column;  /* Stack heading and form vertically */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+}
+
+/* ========== Heading Container ========== */
+.heading-container {
+  text-align: center;
+  margin-bottom: 30px;  /* Added spacing below the heading */
+}
+
+.heading-container h1 {
+  font-size: 42px;      /* Larger heading */
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ========== Signup Container ========== */
+.signup-container {
+  width: 550px;                      /* Slightly reduced width */
+  padding: 30px;                      /* Reduced padding to reduce height */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Scale effect on hover */
+.signup-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== Heading Styling ========== */
+h2 {
+  font-size: 26px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ========== Form Group ========== */
+.form-group {
+  margin-bottom: 15px;               /* Reduced margin for compactness */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: bold;
+  color: #555;
+  font-size: 14px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;                     /* Reduced padding to reduce height */
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.3s ease;
+}
+
+/* Highlight fields on focus */
+input:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* ========== Error Styling ========== */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* ========== Checkbox and Label ========== */
+.form-group label input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.1);
+}
+
+/* ========== Submit Button Styling ========== */
+.btn {
+  width: 100%;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 12px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Hover & Active Effects */
+.btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ========== Login Link Styling ========== */
+p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .heading-container h1 {
+    font-size: 32px; /* Smaller heading on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
