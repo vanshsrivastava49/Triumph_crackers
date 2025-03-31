@@ -1,6 +1,14 @@
-p{
-    margin-top:-15px;
+h1{
+    font-size:70px;
 }
-button{
-    margin-top: 20px;
+.app-container p{
+    margin-top:15px;
+    font-size: 30px;
+}
+.btn{
+    font-family: "Outfit",sans-serif;
+    margin-top: 60px;
+    max-width:20%;
+    margin-left: 420px;
+    height:1.2cm;
 }
