@@ -10,7 +10,6 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    organization: "",
     userType: "applicant", // Default selection
     termsAccepted: false,
   });
@@ -23,23 +22,21 @@ const SignUp = () => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     });
   };
 
   // Form validation
   const validateForm = () => {
     let newErrors = {};
-
     if (!formData.fullName) newErrors.fullName = "Full name is required.";
     if (!formData.email.includes("@")) newErrors.email = "Invalid email format.";
     if (formData.password.length < 6)
       newErrors.password = "Password must be at least 6 characters.";
     if (formData.password !== formData.confirmPassword)
       newErrors.confirmPassword = "Passwords do not match.";
-    if (!formData.termsAccepted)
-      newErrors.termsAccepted = "You must accept the terms and conditions.";
-
+    //if (!formData.termsAccepted)
+      //newErrors.termsAccepted = "You must accept the terms and conditions.";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -47,18 +44,16 @@ const SignUp = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     try {
       const response = await axios.post("http://localhost:5000/api/signup", formData);
       console.log("Success:", response.data);
 
       // Redirect based on user type
       if (formData.userType === "admin") {
-        navigate("/admin-dashboard");
+        navigate("/admin");
       } else {
-        navigate("/applicant-dashboard");
+        navigate("/upload");
       }
     } catch (error) {
       console.error("Error:", error);

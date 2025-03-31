@@ -1,32 +1,84 @@
 const express = require("express");
-const multer = require("multer");
 const cors = require("cors");
+const fs = require("fs");
 const path = require("path");
+const dotenv = require("dotenv");
 
+dotenv.config();
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-// Configure Multer for file uploads
-const storage = multer.diskStorage({
-  destination: "./uploads",
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
+// ✅ File path for storing signup data
+const usersFilePath = path.join(__dirname, "data", "users.json");
 
-const upload = multer({ storage });
+// ✅ Auto-initialize JSON file if missing or empty
+if (!fs.existsSync(usersFilePath) || fs.readFileSync(usersFilePath, "utf-8").trim() === "") {
+  fs.writeFileSync(usersFilePath, JSON.stringify([]), "utf-8");
+  console.log("✅ users.json file initialized with an empty array.");
+}
 
-// API route for file upload
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send("No file uploaded.");
+// ✅ Function to read users from JSON file with fallback
+const readUsers = () => {
+  try {
+    const data = fs.readFileSync(usersFilePath, "utf-8");
+    return data ? JSON.parse(data) : [];
+  } catch (error) {
+    console.error("Error reading users.json:", error);
+    return [];
+  }
+};
+
+// ✅ Function to write users to JSON file
+const writeUsers = (users) => {
+  try {
+    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), "utf-8");
+  } catch (error) {
+    console.error("Error writing to users.json:", error);
+  }
+};
+
+// ✅ Signup API Route
+app.post("/api/signup", (req, res) => {
+  const { fullName, email, password, userType } = req.body;
+
+  // ✅ Validate input fields
+  if (!fullName || !email || !password || !userType) {
+    return res.status(400).json({ message: "All fields are required" });
   }
 
-  res.json({ message: "File uploaded successfully", filename: req.file.filename });
+  const users = readUsers();
+
+  // ✅ Check if email already exists
+  const existingUser = users.find((user) => user.email === email);
+  if (existingUser) {
+    return res.status(409).json({ message: "User with this email already exists" });
+  }
+
+  // ✅ Create new user object
+  const newUser = {
+    id: Date.now(),
+    fullName,
+    email,
+    password,    // Store hashed passwords in production
+    userType,
+    createdAt: new Date().toISOString(),
+  };
+
+  // ✅ Store new user
+  users.push(newUser);
+  writeUsers(users);
+
+  res.status(201).json({ message: "User registered successfully", user: newUser });
 });
 
-// Start the server
+// ✅ Route to fetch all users (for testing)
+app.get("/api/users", (req, res) => {
+  const users = readUsers();
+  res.json(users);
+});
+
+// ✅ Start the server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1743409413278,
+    "fullName": "Vansh Srivastava",
+    "email": "srivastavavansh11@gmail.com",
+    "password": "123456",
+    "userType": "admin",
+    "createdAt": "2025-03-31T08:23:33.278Z"
+  },
+  {
+    "id": 1743409521603,
+    "fullName": "Shubhangi Sharma",
+    "email": "shubhangi@gmail.com",
+    "password": "abcdef",
+    "userType": "applicant",
+    "createdAt": "2025-03-31T08:25:21.603Z"
+  },
+  {
+    "id": 1743409557144,
+    "fullName": "Tejas Bahadur",
+    "email": "tejas@gmail.com",
+    "password": "123456",
+    "userType": "admin",
+    "createdAt": "2025-03-31T08:25:57.144Z"
+  }
+]
